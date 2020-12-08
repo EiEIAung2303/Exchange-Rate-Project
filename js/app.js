@@ -16,22 +16,22 @@ function calculateRate() {
     let amount = amountE1.value;
     //API call
     fetch(`https://api.exchangerate-api.com/v4/latest/${currency_one}`)
-    .then((res) => res.json())
-    .then(data => {
-        //get rate
-        let rate = data.rates[currency_two];
-        //trasfer
-        let result_from = `${currency_one} - ${amount}`;
-        let result_to = `${currency_two} - ${(rate * amount).toFixed(3)}`;
+        .then((res) => res.json())
+        .then(data => {
+            //get rate
+            let rate = data.rates[currency_two];
+            //trasfer
+            let result_from = `${currency_one} - ${amount}`;
+            let result_to = `${currency_two} - ${(rate * amount).toFixed(3)}`;
 
-        //replace '-' to ''
-        let newFirstString = result_from.replace(/-/, '');
-        let newSecondString = result_to.replace(/-/, '');
+            //replace '-' to ''
+            let newFirstString = result_from.replace(/-/, '');
+            let newSecondString = result_to.replace(/-/, '');
 
-        //to display document
-       transfer_fromEl.innerHTML = newFirstString;
-       transfer_toEl.innerHTML = newSecondString;
-    })
+            //to display document
+            transfer_fromEl.innerHTML = newFirstString;
+            transfer_toEl.innerHTML = newSecondString;
+        })
 }
 
 calculateRate();
@@ -47,8 +47,3 @@ swapEl.addEventListener('click', () => {
     currentEl_two.value = tmp;
     calculateRate();
 })
-
-
-
-
-
